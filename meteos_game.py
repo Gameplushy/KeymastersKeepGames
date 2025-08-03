@@ -146,7 +146,7 @@ class MeteosGame(Game):
         return range(4, 6)
     
     def score(self) -> range:
-        return range(50000, 160000 if self.include_hard_mode else 100000, 10000)
+        return range(50000, 160000 if self.include_hard_mode else 110000, 10000)
 
     @functools.cached_property
     def planets_normal(self) -> List[str]:
