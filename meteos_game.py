@@ -56,7 +56,7 @@ class MeteosGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=3,
+                weight=4,
             ),
             GameObjectiveTemplate(
                 label="As PLANET, beat OPPONENT with at least DIFF stars of difficulty and CPUSTA stars of CPU level",
@@ -68,7 +68,7 @@ class MeteosGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=3,
+                weight=4,
             ),
             GameObjectiveTemplate(
                 label="As PLANET, beat OPPONENT with at least DIFF stars of difficulty and CPUSTA stars of CPU level",
@@ -80,7 +80,7 @@ class MeteosGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=3,
+                weight=4,
             ),
             GameObjectiveTemplate(
                 label="In Star Trip mode, win as PLANET in straight mode with at least STARS stars of difficulty",
@@ -111,7 +111,7 @@ class MeteosGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=3,
+                weight=2,
             ),
             GameObjectiveTemplate(
                 label="In Star Trip mode, win as PLANET in multi mode with at least STARS stars of difficulty and defeat True Meteo",
@@ -121,7 +121,7 @@ class MeteosGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=True,
-                weight=3,
+                weight=1,
             ),
             GameObjectiveTemplate(
                 label="In Deluge mode, get as least SCORE points with PLANET",
@@ -131,7 +131,7 @@ class MeteosGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=3,
+                weight=9,
             )
         ]
     
