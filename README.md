@@ -8,7 +8,8 @@ Keymaster's Keep game implementations maintained by Konoko.
 
 
 ### WIP Games (Unfinished/Untested)
-Super Smash Bros 3DS
+Picross 3D
+Picross 3D Round 2
 
 ## Game Objectives
 Game objectives listed by game and type. Time-consuming and difficult objectives are labeled.
@@ -25,4 +26,13 @@ Game objectives listed by game and type. Time-consuming and difficult objectives
 - Hard mode allows you to uncap the amount of stars to 5 and Deluge score goal to 150000
 
 ### Super Smash Bros 3DS
-WIP
+***Not fully tested yet, but should be working. The Mii fights might not be named correctly, as I'm not English***
+- Win a Stock/Time battle (1v1, free for all or 2v2)
+- Win a 1v3 Stock/Time battle | **Difficult**
+- Win Classic/All-Star mode
+- Throw the sandbag a certain distance in Home-Run Contest
+- Get enough points in Target Blast
+- Beat 10/100-Man Smash in a set time
+- Get enough KOs in 3-Minute/Infinite Smash
+- Get enough points in Rival Smash
+- Get enough KOs in Cruel Smash | **Difficult**
