@@ -188,7 +188,7 @@ class SuperSmashBros3dsGame(Game):
                 label ="Get POINTS points with CHARACTER in Rival Smash",
                 data={
                     "CHARACTER": (self.characters, 1),
-                    "POINTS": (self.kos, 1),
+                    "POINTS": (self.rival, 1),
                 },
                 is_time_consuming=False,
                 is_difficult=False,
