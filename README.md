@@ -36,3 +36,5 @@ Game objectives listed by game and type. Time-consuming and difficult objectives
 - Get enough KOs in 3-Minute/Infinite Smash
 - Get enough points in Rival Smash
 - Get enough KOs in Cruel Smash | **Difficult**
+
+- Normal mode gives 1-6 CPU levels, Hard mode changes it to 4-9
