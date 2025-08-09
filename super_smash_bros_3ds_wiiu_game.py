@@ -5,7 +5,7 @@ from typing import List
 
 from dataclasses import dataclass
 
-from Options import OptionSet, Toggle
+from Options import OptionSet, Toggle, Choice
 
 from ..game import Game
 from ..game_objective_template import GameObjectiveTemplate
@@ -14,21 +14,24 @@ from ..enums import KeymastersKeepGamePlatforms
 
 
 @dataclass
-class SuperSmashBros3dsArchipelagoOptions:
-    super_smash_bros_3ds_dlc_characters: SuperSmashBros3dsDLCOwnedCharacters
-    super_smash_bros_3ds_dlc_stages: SuperSmashBros3dsDLCOwnedStages
-    super_smash_bros_3ds_hard_mode: SuperSmashBros3dsHardMode
+class SuperSmashBros3dsWiiUArchipelagoOptions:
+    super_smash_bros_3ds_wiiu_dlc_characters: SuperSmashBros3dsWiiUDLCOwnedCharacters
+    super_smash_bros_3ds_wiiu_dlc_stages: SuperSmashBros3dsWiiUDLCOwnedStages
+    super_smash_bros_3ds_wiiu_hard_mode: SuperSmashBros3dsWiiUHardMode
+    super_smash_bros_3ds_wiiu_console: SuperSmashBros3dsWiiUConsole
 
 
-class SuperSmashBros3dsGame(Game):
-    name = "Super Smash Bros. 3DS"
+class SuperSmashBros3dsWiiUGame(Game):
+    name = "Super Smash Bros. for 3DS/Wii U"
     platform = KeymastersKeepGamePlatforms._3DS
 
-    platforms_other = None
+    platforms_other = [
+        KeymastersKeepGamePlatforms.WIIU,
+    ]
 
     is_adult_only_or_unrated = False
 
-    options_cls = SuperSmashBros3dsArchipelagoOptions
+    options_cls = SuperSmashBros3dsWiiUArchipelagoOptions
 
     def optional_game_constraint_templates(self) -> List[GameObjectiveTemplate]:
         return [
@@ -125,16 +128,6 @@ class SuperSmashBros3dsGame(Game):
                 weight=167,
             ),
             GameObjectiveTemplate(
-                label="Complete Smash Run with CHARACTER against level LEVEL opponents",
-                data={
-                    "CHARACTER": (self.characters, 1),
-                    "LEVEL": (self.cpu_level_range, 1),
-                },
-                is_time_consuming=False,
-                is_difficult=False,
-                weight=83,
-            ),
-            GameObjectiveTemplate(
                 label="Get METERS m with CHARACTER in Home-Run Contest",
                 data={
                     "CHARACTER": (self.characters, 1),
@@ -205,16 +198,100 @@ class SuperSmashBros3dsGame(Game):
                 weight=20,
             ),
             GameObjectiveTemplate(
-                label ="Get POINTS KOs with CHARACTER in Cruel Smash",
+                label ="Get a KO with CHARACTER in Cruel Smash",
                 data={
-                    "CHARACTER": (self.characters, 1),
-                    "POINTS": (self.cruel, 1),
+                    "CHARACTER": (self.characters, 1)
                 },
                 is_time_consuming=False,
                 is_difficult=True,
                 weight=20,
             )
         ]
+
+        if(self.is_wiiu):
+            templates.extend([
+                GameObjectiveTemplate(
+                    label ="Win Smash Tour in TURNS turns using the BOARD board",
+                    data={
+                        "TURNS": (self.smash_tour_turns, 1),
+                        "BOARD": (self.smash_tour_boards, 1)
+                    },
+                    is_time_consuming=False,
+                    is_difficult=True,
+                    weight=20,
+                ),
+                GameObjectiveTemplate(
+                    label="Win a 8-Player Smash MODE as CHARACTER against level LEVEL OPPONENT in STAGE",
+                    data={
+                        "MODE": (self.vs_battle_modes, 1),
+                        "CHARACTER": (self.characters, 1),
+                        "OPPONENT": (self.characters, 7),
+                        "STAGE": (self.stages, 1),
+                        "LEVEL": (self.cpu_level_range, 1),
+                    },
+                    is_time_consuming=False,
+                    is_difficult=False,
+                    weight=125,
+                ),
+                GameObjectiveTemplate(
+                    label="Win a 4v4 Smash MODE with CHARACTER against level LEVEL OPPONENT in STAGE",
+                    data={
+                        "MODE": (self.vs_battle_modes, 1),
+                        "CHARACTER": (self.characters, 4),
+                        "OPPONENT": (self.characters, 4),
+                        "STAGE": (self.stages, 1),
+                        "LEVEL": (self.cpu_level_range, 1),
+                    },
+                    is_time_consuming=False,
+                    is_difficult=False,
+                    weight=125,
+                ),
+                GameObjectiveTemplate(
+                    label="Win a 2v2v2v2 Smash MODE with CHARACTER against level LEVEL OPPONENT in STAGE",
+                    data={
+                        "MODE": (self.vs_battle_modes, 1),
+                        "CHARACTER": (self.characters, 2),
+                        "OPPONENT": (self.characters, 6),
+                        "STAGE": (self.stages, 1),
+                        "LEVEL": (self.cpu_level_range, 1),
+                    },
+                    is_time_consuming=False,
+                    is_difficult=False,
+                    weight=125,
+                ),
+                GameObjectiveTemplate(
+                    label="Survive Master Orders as CHARACTER",
+                    data={
+                        "CHARACTER": (self.characters, 1)
+                    },
+                    is_time_consuming=False,
+                    is_difficult=True,
+                    weight=20,
+                ),
+                GameObjectiveTemplate(
+                    label="Survive Crazy Orders as CHARACTER",
+                    data={
+                        "CHARACTER": (self.characters, 1)
+                    },
+                    is_time_consuming=False,
+                    is_difficult=True,
+                    weight=20,
+                )
+            ])
+        
+        else:
+            templates.append(
+                GameObjectiveTemplate(
+                    label="Complete Smash Run with CHARACTER against level LEVEL opponents",
+                    data={
+                        "CHARACTER": (self.characters, 1),
+                        "LEVEL": (self.cpu_level_range, 1),
+                    },
+                    is_time_consuming=False,
+                    is_difficult=False,
+                    weight=83,
+                ),
+            )
 
         return templates
 
@@ -285,6 +362,15 @@ class SuperSmashBros3dsGame(Game):
         return [
             "Battlefield",
             "Final Destination",
+            "Boxing Ring",
+            "Duck Hunt",
+            "Gaur Plain",
+            "Wily Castle"
+        ]
+    
+    @functools.cached_property
+    def three_ds_stages(self) -> List[str]:
+        return [
             "3D Land",
             "Golden Plains",
             "Rainbow Road",
@@ -299,10 +385,6 @@ class SuperSmashBros3dsGame(Game):
             "Arena Ferox",
             "Reset Bomb Forest",
             "Tortimer Island",
-            "Boxing Ring",
-            "Gaur Plain",
-            "Duck Hunt",
-            "Wily Castle",
             "Pac-Maze",
             "PictoChat 2",
             "Balloon Fight",
@@ -319,11 +401,56 @@ class SuperSmashBros3dsGame(Game):
             "Distant Planet",
             "Green Hill Zone",
         ]
+    
+    @functools.cached_property
+    def wii_u_stages(self) -> List[str]:
+        return [
+            "Big Battlefield",
+            "Mushroom Kingdom U",
+            "Mario Galaxy",
+            "Wooly Wood",
+            "Jungle Hijinxs",
+            "Skyloft",
+            "Pyrosphere",
+            "The Great Cave Offensive",
+            "Coliseum",
+            "Flat Zone X",
+            "Palutena's Temple",
+            "Gamer",
+            "Garden of Hope",
+            "Windy Hill Zone",
+            "Pac-Land"
+            "Wrecking Crew",
+            "Pilotwings",
+            "Wuhu Island",
+            "Delfino Plaza",
+            "Mario Circuit (Brawl)",
+            "Luigi's Mansion",
+            "Yoshi's Island",
+            "Kongo Jungle 64",
+            "75m",
+            "Temple",
+            "Bridge of Eldin",
+            "Norfair",
+            "Halberd",
+            "Lylat Cruise",
+            "Pokémon Stadium 2",
+            "Port Town Aero Dive",
+            "Onett",
+            "Castle Siege",
+            "Skyworld",
+            "Smashville"
+        ]
 
     def stages(self) -> List[str]:
         stages: List[str] = self.stages_base[:]
 
         stages.extend(self.dlc_stages[:])
+
+        if(self.is_wiiu):
+            stages.extend(self.wii_u_stages[:])
+        else:
+            stages.extend(self.three_ds_stages[:])
 
         return sorted(stages)
 
@@ -373,29 +500,48 @@ class SuperSmashBros3dsGame(Game):
         ]
 
     @staticmethod
+    def smash_tour_turns() -> range:
+        return range(15, 26, 5)
+
+    @staticmethod
+    def smash_tour_boards() -> List[str]:
+        return [
+            "Small",
+            "Normal",
+            "Big"
+        ]
+
+    @staticmethod
     def time_stamps() -> List[str]:
         return [f"{x//60}:{(x%60):02d}" for x in range(180,301)]
     
     @property
     def dlc_characters(self) -> List[str]:
-        return sorted(self.archipelago_options.super_smash_bros_3ds_dlc_characters.value)
+        return sorted(self.archipelago_options.super_smash_bros_3ds_wiiu_dlc_characters.value)
     
     @property
     def dlc_stages(self) -> List[str]:
-        return sorted(self.archipelago_options.super_smash_bros_3ds_dlc_stages.value)
+        stages : List[str] = sorted(self.archipelago_options.super_smash_bros_3ds_wiiu_dlc_stages.value)
+        if (not self.is_wiiu) and "Pirate Ship" in stages:
+            stages.remove("Pirate Ship")  # Wii U exclusive stage
+        return stages
 
     @property
     def is_hard_mode(self) -> bool:
-        return bool(self.archipelago_options.super_smash_bros_3ds_hard_mode.value)
+        return bool(self.archipelago_options.super_smash_bros_3ds_wiiu_hard_mode.value)
+
+    @property
+    def is_wiiu(self) -> bool:
+        return bool(self.archipelago_options.super_smash_bros_3ds_wiiu_console.value == SuperSmashBros3dsWiiUConsole.option_wiiU)
 
 
 # Archipelago Options
-class SuperSmashBros3dsDLCOwnedCharacters(OptionSet):
+class SuperSmashBros3dsWiiUDLCOwnedCharacters(OptionSet):
     """
-    Indicates which Super Smash Bros. Ultimate DLC characters the player owns, if any.
+    Indicates which Super Smash Bros. DLC characters the player owns, if any.
     """
 
-    display_name = "Super Smash Bros. 3DS DLC Characters Owned"
+    display_name = "Super Smash Bros. 3DS Wii U DLC Characters Owned"
     valid_keys = [
         "Lucas",
         "Mewtwo",
@@ -408,27 +554,38 @@ class SuperSmashBros3dsDLCOwnedCharacters(OptionSet):
 
     default = valid_keys
 
-class SuperSmashBros3dsDLCOwnedStages(OptionSet):
+class SuperSmashBros3dsWiiUDLCOwnedStages(OptionSet):
     """
-    Indicates which Super Smash Bros. Ultimate DLC stages the player owns, if any.
+    Indicates which Super Smash Bros. DLC stages the player owns, if any.
+    Pirate Ship is Wii U exclusive and will be ignored if the chosen platform is 3DS.
     """
 
-    display_name = "Super Smash Bros. 3DS DLC Stages Owned"
+    display_name = "Super Smash Bros. 3DS Wii U DLC Stages Owned"
     valid_keys = [
         "Super Mario Maker",
         "Suzaku Castle",
         "Midgar",
         "Umbra Clock Tower",
-        "Peach's Castle (64)",
-        "Hyrule Castle (64)",
+        "Peach's Castle",
+        "Hyrule Castle",
         "Dream Land (64)",
+        "Pirate Ship"
     ]
 
     default = valid_keys
 
-class SuperSmashBros3dsHardMode(Toggle):
+class SuperSmashBros3dsWiiUHardMode(Toggle):
     """
     Indicates whether to include harder CPU levels. Normal mode CPU level range is 1-6, while hard mode is 4-9
     """
 
-    display_name = "Super Smash Bros. 3DS Hard Mode"
+    display_name = "Super Smash Bros. 3DS Wii U Hard Mode"
+
+class SuperSmashBros3dsWiiUConsole(Choice):
+    """
+    Indicates whether to include harder CPU levels. Normal mode CPU level range is 1-6, while hard mode is 4-9
+    """
+    display_name = "Super Smash Bros. 3DS or Wii U"
+    option_3ds = 0
+    option_wiiU = 1
+    default = 0

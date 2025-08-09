@@ -23,10 +23,10 @@ Game objectives listed by game and type. Time-consuming and difficult objectives
 - Score (50000-100000) points in Deluge mode as (planet)
 - Star Trip: defeat True Meteo as (planet) in Multi mode | **Difficult**
 
-- Hard mode allows you to uncap the amount of stars to 5 and Deluge score goal to 150000
+Hard mode allows you to uncap the amount of stars to 5 and Deluge score goal to 150000
 
 ### Super Smash Bros 3DS
-***Not fully tested yet, but should be working. The Mii fights might not be named correctly, as I'm not English***
+***Not fully tested yet. The Mii fights might not be named correctly, as I'm not English. Also Wii U implementation might me wonky/wrong***
 - Win a Stock/Time battle (1v1, free for all or 2v2)
 - Win a 1v3 Stock/Time battle | **Difficult**
 - Win Classic/All-Star mode
@@ -37,4 +37,12 @@ Game objectives listed by game and type. Time-consuming and difficult objectives
 - Get enough points in Rival Smash
 - Get enough KOs in Cruel Smash | **Difficult**
 
-- Normal mode gives 1-6 CPU levels, Hard mode changes it to 4-9
+#### 3DS Specifics
+- Win Smash Run mode
+
+#### Wii U Specifics
+- Win a Stock/Time battle (FFA 8 players, 4v4, 2v2v2v2)
+- Win Smash Tour mode
+- Survive Master/Crazy Orders
+
+Normal mode gives 1-6 CPU levels, Hard mode changes it to 4-9
