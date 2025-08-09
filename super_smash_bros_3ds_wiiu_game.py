@@ -61,6 +61,10 @@ class SuperSmashBros3dsWiiUGame(Game):
                 label="Play with all items active (when applicable)",
                 data=dict(),
             ),
+            GameObjectiveTemplate(
+                label="Play with random customized characters (when applicable)",
+                data=dict(),
+            )
         ]
 
     def game_objective_templates(self) -> List[GameObjectiveTemplate]:
@@ -76,7 +80,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=125,
+                weight=2,
             ),
             GameObjectiveTemplate(
                 label="Win a Free For All MODE as CHARACTER against level LEVEL OPPONENTS in STAGE",
@@ -89,7 +93,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=125,
+                weight=2,
             ),
             GameObjectiveTemplate(
                 label="Win a Team Battle MODE with a team of CHARACTERS against level LEVEL OPPONENTS in STAGE",
@@ -102,7 +106,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=125,
+                weight=2,
             ),
             GameObjectiveTemplate(
                 label="Win a Team Battle MODE as CHARACTER against level LEVEL OPPONENTS in STAGE",
@@ -115,7 +119,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=True,
-                weight=125,
+                weight=2,
             ),
             GameObjectiveTemplate(
                 label="Complete MODE as CHARACTER",
@@ -125,7 +129,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=167,
+                weight=3,
             ),
             GameObjectiveTemplate(
                 label="Get METERS m with CHARACTER in Home-Run Contest",
@@ -135,7 +139,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=60,
+                weight=1,
             ),
             GameObjectiveTemplate(
                 label="Get POINTS points with CHARACTER in Target Blast",
@@ -145,7 +149,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=60,
+                weight=1,
             ),
             GameObjectiveTemplate(
                 label ="Win 10-Man Smash with CHARACTER in SECONDS seconds",
@@ -155,7 +159,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=20,
+                weight=1,
             ),
             GameObjectiveTemplate(
                 label ="Win 100-Man Smash with CHARACTER in SECONDS",
@@ -165,7 +169,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=20,
+                weight=1,
             ),
             GameObjectiveTemplate(
                 label ="Get POINTS KOs with CHARACTER in 3-Minute Smash",
@@ -175,7 +179,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=20,
+                weight=1,
             ),
             GameObjectiveTemplate(
                 label ="Get POINTS points with CHARACTER in Rival Smash",
@@ -185,7 +189,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=20,
+                weight=1,
             ),
             GameObjectiveTemplate(
                 label ="Get POINTS KOs with CHARACTER in Infinite Smash",
@@ -195,7 +199,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=20,
+                weight=1,
             ),
             GameObjectiveTemplate(
                 label ="Get a KO with CHARACTER in Cruel Smash",
@@ -204,7 +208,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=True,
-                weight=20,
+                weight=1,
             )
         ]
 
@@ -218,7 +222,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                     },
                     is_time_consuming=False,
                     is_difficult=True,
-                    weight=20,
+                    weight=2,
                 ),
                 GameObjectiveTemplate(
                     label="Win a 8-Player Smash MODE as CHARACTER against level LEVEL OPPONENT in STAGE",
@@ -231,7 +235,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                     },
                     is_time_consuming=False,
                     is_difficult=False,
-                    weight=125,
+                    weight=2,
                 ),
                 GameObjectiveTemplate(
                     label="Win a 4v4 Smash MODE with CHARACTER against level LEVEL OPPONENT in STAGE",
@@ -244,7 +248,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                     },
                     is_time_consuming=False,
                     is_difficult=False,
-                    weight=125,
+                    weight=2,
                 ),
                 GameObjectiveTemplate(
                     label="Win a 2v2v2v2 Smash MODE with CHARACTER against level LEVEL OPPONENT in STAGE",
@@ -257,7 +261,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                     },
                     is_time_consuming=False,
                     is_difficult=False,
-                    weight=125,
+                    weight=2,
                 ),
                 GameObjectiveTemplate(
                     label="Survive Master Orders as CHARACTER",
@@ -265,8 +269,8 @@ class SuperSmashBros3dsWiiUGame(Game):
                         "CHARACTER": (self.characters, 1)
                     },
                     is_time_consuming=False,
-                    is_difficult=True,
-                    weight=20,
+                    is_difficult=False,
+                    weight=2,
                 ),
                 GameObjectiveTemplate(
                     label="Survive Crazy Orders as CHARACTER",
@@ -274,8 +278,8 @@ class SuperSmashBros3dsWiiUGame(Game):
                         "CHARACTER": (self.characters, 1)
                     },
                     is_time_consuming=False,
-                    is_difficult=True,
-                    weight=20,
+                    is_difficult=False,
+                    weight=1,
                 )
             ])
         
@@ -289,7 +293,7 @@ class SuperSmashBros3dsWiiUGame(Game):
                     },
                     is_time_consuming=False,
                     is_difficult=False,
-                    weight=83,
+                    weight=2,
                 ),
             )
 
@@ -345,7 +349,7 @@ class SuperSmashBros3dsWiiUGame(Game):
             "Villager",
             "Duck Hunt",
             "Mega Man",
-            "Pac-Man"
+            "Pac-Man",
             "Mii Brawler",
             "Mii Swordfighter",
             "Mii Gunner",
@@ -583,7 +587,7 @@ class SuperSmashBros3dsWiiUHardMode(Toggle):
 
 class SuperSmashBros3dsWiiUConsole(Choice):
     """
-    Indicates whether to include harder CPU levels. Normal mode CPU level range is 1-6, while hard mode is 4-9
+    Indicates whether you are playing with a 3DS or a Wii U.
     """
     display_name = "Super Smash Bros. 3DS or Wii U"
     option_3ds = 0
