@@ -65,7 +65,7 @@ class Picross3dRound2Game(Game):
                 weight=3,
             ),
             GameObjectiveTemplate(
-                label="Beat all levels of book BOOK",
+                label="Beat all levels of BOOK",
                 data={
                     "BOOK": (self.books, 1),
                 },

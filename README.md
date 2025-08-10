@@ -8,7 +8,7 @@ Keymaster's Keep game implementations maintained by Konoko.
 
 
 ### WIP Games (Unfinished/Untested)
-Picross 3D
+N/A for now!
 
 ## Game Objectives
 Game objectives listed by game and type. Time-consuming and difficult objectives are labeled.
@@ -45,6 +45,10 @@ Hard mode allows you to uncap the amount of stars to 5 and Deluge score goal to 
 - Survive Master/Crazy Orders
 
 Normal mode gives 1-6 CPU levels, Hard mode changes it to 4-9
+
+### Picross 3D
+- Complete a puzzle
+- Complete all puzzles of a level | **Time-consuming**
 
 ### Picross 3D Round 2
 - Complete a level
