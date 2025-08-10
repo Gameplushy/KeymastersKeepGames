@@ -47,7 +47,7 @@ class MeteosGame(Game):
     def game_objective_templates(self) -> List[GameObjectiveTemplate]:
         return [
             GameObjectiveTemplate(
-                label="As PLANET, beat OPPONENT with at least DIFF stars of difficulty and CPUSTA stars of CPU level",
+                label="As PLANET, beat OPPONENT with at least DIFF star(s) of difficulty and CPUSTA star(s) of CPU level",
                 data={
                     "PLANET": (self.planets, 1),
                     "OPPONENT": (self.planets, 1),
@@ -59,7 +59,7 @@ class MeteosGame(Game):
                 weight=4,
             ),
             GameObjectiveTemplate(
-                label="As PLANET, beat OPPONENT with at least DIFF stars of difficulty and CPUSTA stars of CPU level",
+                label="As PLANET, beat OPPONENT with at least DIFF star(s) of difficulty and CPUSTA star(s) of CPU level",
                 data={
                     "PLANET": (self.planets, 1),
                     "OPPONENT": (self.planets, 2),
@@ -71,7 +71,7 @@ class MeteosGame(Game):
                 weight=4,
             ),
             GameObjectiveTemplate(
-                label="As PLANET, beat OPPONENT with at least DIFF stars of difficulty and CPUSTA stars of CPU level",
+                label="As PLANET, beat OPPONENT with at least DIFF star(s) of difficulty and CPUSTA star(s) of CPU level",
                 data={
                     "PLANET": (self.planets, 1),
                     "OPPONENT": (self.planets, 3),
@@ -83,7 +83,7 @@ class MeteosGame(Game):
                 weight=4,
             ),
             GameObjectiveTemplate(
-                label="In Star Trip mode, win as PLANET in straight mode with at least STARS stars of difficulty",
+                label="In Star Trip mode, win as PLANET in straight mode with at least STARS star(s) of difficulty",
                 data={
                     "PLANET": (self.planets, 1),
                     "STARS": (self.stars, 1),
@@ -93,7 +93,7 @@ class MeteosGame(Game):
                 weight=3,
             ),
             GameObjectiveTemplate(
-                label="In Star Trip mode, win as PLANET in branch mode with at least STARS stars of difficulty and get ending ENDING",
+                label="In Star Trip mode, win as PLANET in branch mode with at least STARS star(s) of difficulty and get ending ENDING",
                 data={
                     "PLANET": (self.planets, 1),
                     "STARS": (self.stars, 1),
@@ -104,7 +104,7 @@ class MeteosGame(Game):
                 weight=3,
             ),
             GameObjectiveTemplate(
-                label="In Star Trip mode, win as PLANET in multi mode with at least STARS stars of difficulty",
+                label="In Star Trip mode, win as PLANET in multi mode with at least STARS star(s) of difficulty",
                 data={
                     "PLANET": (self.planets, 1),
                     "STARS": (self.stars, 1),
@@ -114,7 +114,7 @@ class MeteosGame(Game):
                 weight=2,
             ),
             GameObjectiveTemplate(
-                label="In Star Trip mode, win as PLANET in multi mode with at least STARS stars of difficulty and defeat True Meteo",
+                label="In Star Trip mode, win as PLANET in multi mode with at least STARS star(s) of difficulty and defeat True Meteo",
                 data={
                     "PLANET": (self.planets, 1),
                     "STARS": (self.stars, 1),

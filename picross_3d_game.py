@@ -51,7 +51,7 @@ class Picross3dGame(Game):
     def game_objective_templates(self) -> List[GameObjectiveTemplate]:
         return [
             GameObjectiveTemplate(
-                label="Beat LEVEL and get at least MEDAL stars",
+                label="Beat LEVEL and get at least MEDAL star(s)",
                 data={
                     "LEVEL": (self.puzzles, 1),
                     "MEDAL": (self.stars, 1),
