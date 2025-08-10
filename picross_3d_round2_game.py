@@ -5,7 +5,7 @@ from typing import List, Dict, Set
 
 from dataclasses import dataclass
 
-from Options import Toggle, OptionSet
+from Options import Toggle, DefaultOnToggle
 
 from ..game import Game
 from ..game_objective_template import GameObjectiveTemplate
@@ -37,6 +37,18 @@ class Picross3dRound2Game(Game):
                 label="Play in hard mode",
                 data= dict(),
             ),
+            GameObjectiveTemplate(
+                label="Get only rainbow medals",
+                data= dict(),
+            ),
+            GameObjectiveTemplate(
+                label="Do not make any mistakes",
+                data= dict(),
+            ),
+            GameObjectiveTemplate(
+                label="Finish in less than 20 minutes",
+                data= dict(),
+            ),
         ]
 
     # Main Objectives
@@ -64,7 +76,7 @@ class Picross3dRound2Game(Game):
         ]
     
     @staticmethod
-    def medals(self) -> List[str]:
+    def medals() -> List[str]:
         return [
             "Ruby",
             "Emerald",
@@ -534,30 +546,28 @@ class Picross3dRound2Game(Game):
             "Book 52"
         ]
 
-    @staticmethod
     def levels(self) -> List[str]:
         levellist: List[str] = self.normal_levels[:]
         if self.include_tutorial_levels:
             levellist.extend(self.tutorial_levels[:])
         if self.include_time_challenges:
-            levellist.extend(self.time_challenge_levels[:])
+            levellist.extend(self.time_levels[:])
         if self.include_one_chance_challenges:
-            levellist.extend(self.one_chance_levels[:])
+            levellist.extend(self.chance_levels[:])
         if self.include_construction_challenges:
-            levellist.extend(self.construction_levels[:])
+            levellist.extend(self.construct_levels[:])
         return levellist
 
-    @staticmethod
     def books(self) -> List[str]:
         booklist: List[str] = self.normal_books[:]
         if self.include_tutorial_levels:
             booklist.extend(self.tutorial_books[:])
         if self.include_time_challenges:
-            booklist.extend(self.time_challenge_books[:])
+            booklist.extend(self.time_books[:])
         if self.include_one_chance_challenges:
-            booklist.extend(self.one_chance_books[:])
+            booklist.extend(self.chance_books[:])
         if self.include_construction_challenges:
-            booklist.extend(self.construction_books[:])
+            booklist.extend(self.construct_books[:])
         return booklist
 
     @property
@@ -584,21 +594,21 @@ class Picross3dRound2IncludeTutorialLevels(Toggle):
 
     display_name = "Picross 3D Round 2 Include Tutorial Levels"
 
-class Picross3dRound2IncludeTimeChallenges(Toggle):
+class Picross3dRound2IncludeTimeChallenges(DefaultOnToggle):
     """
     Indicates whether to include Time challenges (Books 12 and 36).
     """
 
     display_name = "Picross 3D Round 2 Include Time Challenges"
 
-class Picross3dRound2IncludeOneChanceChallenges(Toggle):
+class Picross3dRound2IncludeOneChanceChallenges(DefaultOnToggle):
     """
     Indicates whether to include One Chance challenges (Books 20 and 48).
     """
 
     display_name = "Picross 3D Round 2 Include One Chance Challenges"
 
-class Picross3dRound2IncludeConstructionChallenges(Toggle):
+class Picross3dRound2IncludeConstructionChallenges(DefaultOnToggle):
     """
     Indicates whether to include Construction challenges (Books 16, 24, 32, 40, and 52).
     """
