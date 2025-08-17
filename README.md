@@ -53,3 +53,8 @@ Normal mode gives 1-6 CPU levels, Hard mode changes it to 4-9
 ### Picross 3D Round 2
 - Complete a level
 - Complete all levels in a book | **Time-consuming**
+
+## Sayonara Wild Hearts
+- Complete a level
+- Complete Album Arcade | **Time-consuming**
+- Complete Yolo Arcade | **Difficult** AND **Time-Consuming**
