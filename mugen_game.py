@@ -5,7 +5,7 @@ from typing import List, Dict, Set
 
 from dataclasses import dataclass
 
-from Options import OptionSet, OptionList
+from Options import OptionSet, OptionList, OptionError
 
 from ..game import Game
 from ..game_objective_template import GameObjectiveTemplate
@@ -188,6 +188,8 @@ class MugenGame(Game):
     
     @property
     def mugen_characters(self) -> List[str]:
+        if(len(self.archipelago_options.mugen_characters.value)<4):
+            raise OptionError("At least 4 characters must is required for M.U.G.E.N.")
         return sorted(self.archipelago_options.mugen_characters.value)
     
     @property
@@ -200,6 +202,8 @@ class MugenGame(Game):
 
     @property
     def mugen_stages(self) -> List[str]:
+        if(len(self.archipelago_options.mugen_stages.value)==0):
+            raise OptionError("At least 1 stage must is required for M.U.G.E.N.")
         return sorted(self.archipelago_options.mugen_stages.value)
 
 
@@ -208,6 +212,7 @@ class MugenCharacters(OptionList):
     """
     Indicates which characters can be used for M.U.G.E.N.
     This list is fully customizable. Duplicates can be used to skew weights. (Can cause duplicates in team fights)
+    At least 4 characters must be selected.
     """
 
     display_name = "M.U.G.E.N. Characters"
@@ -235,6 +240,7 @@ class MugenStages(OptionSet):
     """
     Indicates which stages can be used for M.U.G.E.N.
     This list is fully customizable.
+    This cannot be empty.
     """
 
     display_name = "M.U.G.E.N. Stages"
