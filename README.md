@@ -29,7 +29,7 @@ Game objectives listed by game and type. Time-consuming and difficult objectives
 Hard mode allows you to uncap the amount of stars to 5 and Deluge score goal to 150000
 
 ### M.U.G.E.N.
-***Not fully tested yet, but should be working. Missing validation***
+***Not fully tested yet, but should be working.***
 - Win a 1v1/2v2 teams|simul/3v3/4v4 fight
 - Survive 5 rounds of Survival mode
 - Win Arcade mode

@@ -56,7 +56,7 @@ class MugenGame(Game):
 
     # Main Objectives
     def game_objective_templates(self) -> List[GameObjectiveTemplate]:
-        return [
+        objectives: List[GameObjectiveTemplate] = [            
             GameObjectiveTemplate(
                 label="Win as PLAYER against OPPONENT in STAGE",
                 data={
@@ -67,51 +67,6 @@ class MugenGame(Game):
                 is_time_consuming=False,
                 is_difficult=False,
                 weight=11,
-            ),
-            GameObjectiveTemplate(
-                label="Win in a 2v2 simul battle as PLAYER with ALLY against OPPONENT in STAGE",
-                data={
-                    "PLAYER": (self.player_characters, 1),
-                    "ALLY": (self.all_characters, 1),
-                    "OPPONENT": (self.ai_characters, 2),
-                    "STAGE": (self.stages, 1),
-                },
-                is_time_consuming=False,
-                is_difficult=False,
-                weight=3,
-            ),
-            GameObjectiveTemplate(
-                label="Win in a 2v2 turns battle as PLAYERS against OPPONENT in STAGE",
-                data={
-                    "PLAYERS": (self.player_characters, 2),
-                    "OPPONENT": (self.ai_characters, 2),
-                    "STAGE": (self.stages, 1),
-                },
-                is_time_consuming=False,
-                is_difficult=False,
-                weight=2,
-            ),
-            GameObjectiveTemplate(
-                label="Win in a 3v3 turns battle as PLAYERS against OPPONENT in STAGE",
-                data={
-                    "PLAYERS": (self.player_characters, 3),
-                    "OPPONENT": (self.ai_characters, 3),
-                    "STAGE": (self.stages, 1),
-                },
-                is_time_consuming=False,
-                is_difficult=False,
-                weight=2,
-            ),
-            GameObjectiveTemplate(
-                label="Win in a 4v4 turns battle as PLAYERS against OPPONENT in STAGE",
-                data={
-                    "PLAYERS": (self.player_characters, 4),
-                    "OPPONENT": (self.ai_characters, 4),
-                    "STAGE": (self.stages, 1),
-                },
-                is_time_consuming=False,
-                is_difficult=False,
-                weight=2,
             ),
             GameObjectiveTemplate(
                 label="Win 5 rounds of survival mode with CHARACTER",
@@ -133,24 +88,6 @@ class MugenGame(Game):
                 weight=1,
             ),
             GameObjectiveTemplate(
-                label="Win 5 rounds of survival mode with a team of CHARACTER",
-                data={
-                    "CHARACTER": (self.player_characters, 3),
-                },
-                is_time_consuming=False,
-                is_difficult=False,
-                weight=1,
-            ),
-            GameObjectiveTemplate(
-                label="Win 5 rounds of survival mode with a team of CHARACTER",
-                data={
-                    "CHARACTER": (self.player_characters, 4),
-                },
-                is_time_consuming=False,
-                is_difficult=False,
-                weight=1,
-            ),
-            GameObjectiveTemplate(
                 label="Finish Arcade mode with CHARACTER",
                 data={
                     "CHARACTER": (self.player_characters, 1),
@@ -160,6 +97,88 @@ class MugenGame(Game):
                 weight=4,
             ),
         ]
+        if(len(self.ai_characters())>=2):
+            objectives.append(            
+                GameObjectiveTemplate(
+                    label="Win in a 2v2 simul battle as PLAYER with ALLY against OPPONENT in STAGE",
+                    data={
+                        "PLAYER": (self.player_characters, 1),
+                        "ALLY": (self.all_characters, 1),
+                        "OPPONENT": (self.ai_characters, 2),
+                        "STAGE": (self.stages, 1),
+                    },
+                    is_time_consuming=False,
+                    is_difficult=False,
+                    weight=3,
+                )
+            )
+            if(len(self.player_characters())>=2):
+                objectives.append(
+                    GameObjectiveTemplate(
+                        label="Win in a 2v2 turns battle as PLAYERS against OPPONENT in STAGE",
+                        data={
+                            "PLAYERS": (self.player_characters, 2),
+                            "OPPONENT": (self.ai_characters, 2),
+                            "STAGE": (self.stages, 1),
+                        },
+                        is_time_consuming=False,
+                        is_difficult=False,
+                        weight=2,
+                    )
+                )
+        if(len(self.player_characters())>=3):
+            objectives.append(
+                GameObjectiveTemplate(
+                    label="Win 5 rounds of survival mode with a team of CHARACTER",
+                    data={
+                        "CHARACTER": (self.player_characters, 3),
+                    },
+                    is_time_consuming=False,
+                    is_difficult=False,
+                    weight=1,
+                )
+            )
+            if(len(self.ai_characters())>=3):
+                objectives.append(
+                    GameObjectiveTemplate(
+                        label="Win in a 3v3 turns battle as PLAYERS against OPPONENT in STAGE",
+                        data={
+                            "PLAYERS": (self.player_characters, 3),
+                            "OPPONENT": (self.ai_characters, 3),
+                            "STAGE": (self.stages, 1),
+                        },
+                        is_time_consuming=False,
+                        is_difficult=False,
+                        weight=2,
+                    )
+                )
+        if(len(self.player_characters())>=4):
+            objectives.append(
+                GameObjectiveTemplate(
+                    label="Win 5 rounds of survival mode with a team of CHARACTER",
+                    data={
+                        "CHARACTER": (self.player_characters, 4),
+                    },
+                    is_time_consuming=False,
+                    is_difficult=False,
+                    weight=1,
+                )
+            )
+            if(len(self.ai_characters)>=4):
+                objectives.append(
+                    GameObjectiveTemplate(
+                        label="Win in a 4v4 turns battle as PLAYERS against OPPONENT in STAGE",
+                        data={
+                            "PLAYERS": (self.player_characters, 4),
+                            "OPPONENT": (self.ai_characters, 4),
+                            "STAGE": (self.stages, 1),
+                        },
+                        is_time_consuming=False,
+                        is_difficult=False,
+                        weight=2,
+                    )
+                )
+        return objectives
     
     def all_characters(self) -> List[str]:
         return self.mugen_characters[:]
@@ -167,11 +186,15 @@ class MugenGame(Game):
     def player_characters(self) -> List[str]:
         characters: List[str] = self.mugen_characters[:]
         characters = [c for c in characters if c not in self.mugen_ai_only_characters]
+        if(len(characters)==0):
+            raise OptionError("No player characters available for M.U.G.E.N.")
         return characters
 
     def ai_characters(self) -> List[str]:
         characters: List[str] = self.mugen_characters[:]
         characters = [c for c in characters if c not in self.mugen_player_only_characters]
+        if(len(characters)==0):
+            raise OptionError("No AI characters available for M.U.G.E.N.")
         return characters
 
 
@@ -188,8 +211,8 @@ class MugenGame(Game):
     
     @property
     def mugen_characters(self) -> List[str]:
-        if(len(self.archipelago_options.mugen_characters.value)<4):
-            raise OptionError("At least 4 characters must is required for M.U.G.E.N.")
+        if(len(self.archipelago_options.mugen_characters.value)==0):
+            raise OptionError("No characters selected for M.U.G.E.N.")
         return sorted(self.archipelago_options.mugen_characters.value)
     
     @property
@@ -203,7 +226,7 @@ class MugenGame(Game):
     @property
     def mugen_stages(self) -> List[str]:
         if(len(self.archipelago_options.mugen_stages.value)==0):
-            raise OptionError("At least 1 stage must is required for M.U.G.E.N.")
+            raise OptionError("No stages selected for M.U.G.E.N.")
         return sorted(self.archipelago_options.mugen_stages.value)
 
 
@@ -212,7 +235,6 @@ class MugenCharacters(OptionList):
     """
     Indicates which characters can be used for M.U.G.E.N.
     This list is fully customizable. Duplicates can be used to skew weights. (Can cause duplicates in team fights)
-    At least 4 characters must be selected.
     """
 
     display_name = "M.U.G.E.N. Characters"
@@ -221,7 +243,8 @@ class MugenCharacters(OptionList):
 class MugenPlayerOnlyCharacters(OptionSet):
     """
     Indicates which characters can only be used by the player, not the AI, for M.U.G.E.N.
-    This list is fully customizable, and must be a subset of the full list of characters (Extra characters will be ignored).
+    This list is fully customizable, and must be a subset of the full list of characters (Extra characters will be ignored). Make sure at least have one character available.
+    For the best experience, make sure at least 4 characters are accessible.
     """
 
     display_name = "M.U.G.E.N. Player Only Characters"
@@ -230,7 +253,8 @@ class MugenPlayerOnlyCharacters(OptionSet):
 class MugenAiOnlyCharacters(OptionSet):
     """
     Indicates which characters can only be used by the AI, not the player, for M.U.G.E.N.
-    This list is fully customizable, and must be a subset of the full list of characters (Extra characters will be ignored).
+    This list is fully customizable, and must be a subset of the full list of characters (Extra characters will be ignored). Make sure at least have one character available.
+    For the best experience, make sure at least 4 characters are accessible.
     """
 
     display_name = "M.U.G.E.N. AI Only Characters"
@@ -244,4 +268,4 @@ class MugenStages(OptionSet):
     """
 
     display_name = "M.U.G.E.N. Stages"
-    default = ["Training Zone", "Mountainside Temple"]
+    default = ["Training Room", "Mountainside Temple"]
