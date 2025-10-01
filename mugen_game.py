@@ -164,7 +164,7 @@ class MugenGame(Game):
                     weight=1,
                 )
             )
-            if(len(self.ai_characters)>=4):
+            if(len(self.ai_characters())>=4):
                 objectives.append(
                     GameObjectiveTemplate(
                         label="Win in a 4v4 turns battle as PLAYERS against OPPONENT in STAGE",
