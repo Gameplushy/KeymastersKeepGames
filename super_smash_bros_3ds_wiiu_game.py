@@ -341,7 +341,7 @@ class SuperSmashBros3dsWiiUGame(Game):
             "Palutena",
             "R.O.B.",
             "Sonic",
-            "Rosalinea & Luma",
+            "Rosalina & Luma",
             "Bowser Jr.",
             "Lucina",
             "Dark Pit",
