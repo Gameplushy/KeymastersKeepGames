@@ -43,7 +43,7 @@ Hard mode allows you to uncap the amount of stars to 5 and Deluge score goal to 
 - Complete a level
 - Complete all levels in a book | **Time-consuming**
 
-## Sayonara Wild Hearts
+### Sayonara Wild Hearts
 - Complete a level with a certain rank
 - Complete Album Arcade with a certain rank | **Time-consuming**
 - Complete Yolo Arcade with a certain rank | **Difficult** AND **Time-Consuming**
