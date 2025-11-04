@@ -11,7 +11,7 @@ Keymaster's Keep game implementations maintained by Konoko.
 - Super Smash Bros 3DS | [Objectives](#super-smash-bros-3dswii-u)
 
 
-### WIP Games (Not released, in the works or thinking about it
+### WIP Games (Not released, in the works or thinking about it)
 - ARMS (Switch)
 - M.U.G.E.N. - Add IKEMEN Go support (Tag teams and 3v3 and 4v4 simul)
 - M.U.G.E.N. - Set Min/Max for teams
