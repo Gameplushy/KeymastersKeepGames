@@ -5,7 +5,7 @@ from typing import List, Dict, Set
 
 from dataclasses import dataclass
 
-from Options import Toggle, Range
+from Options import Toggle, Range, DefaultOnToggle, OptionError
 
 from ..game import Game
 from ..game_objective_template import GameObjectiveTemplate
@@ -156,7 +156,7 @@ class ArmsGame(Game):
     def four_modes() -> List[str]:
         return [
             "Fight",
-            "Team Fight"
+            "Team Fight",
             "V-Ball",
             "Skilshot",
             "Hedlok Scramble"
@@ -171,6 +171,8 @@ class ArmsGame(Game):
         return bool(self.archipelago_options.arms_two_only.value)
     
     def level(self) -> range:
+        if self.archipelago_options.arms_max_level.value < self.archipelago_options.arms_min_level.value:
+            raise OptionError("ARMS: Max difficulty cannot be lower than the Min")
         return range(int(self.archipelago_options.arms_min_level.value),int(self.archipelago_options.arms_max_level.value) +1)
 
 

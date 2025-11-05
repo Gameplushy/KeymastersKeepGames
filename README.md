@@ -3,6 +3,7 @@ Keymaster's Keep game implementations maintained by Konoko.
 
 
 ## Games Included
+- Arms | [Objectives](#arms)
 - Meteos | [Objectives](#meteos)
 - M.U.G.E.N. | [Objectives](#mugen)
 - Picross 3D | [Objectives](#picross-3d)
@@ -12,13 +13,18 @@ Keymaster's Keep game implementations maintained by Konoko.
 
 
 ### WIP Games (Not released, in the works or thinking about it)
-- ARMS (Switch)
 - M.U.G.E.N. - Add IKEMEN Go support (Tag teams and 3v3 and 4v4 simul)
 - M.U.G.E.N. - Set Min/Max for teams
 - M.U.G.E.N. - Add option for unbalanced teams
 
 ## Game Objectives
 Game objectives listed by game and type. Time-consuming and difficult objectives are labeled.
+
+### Arms
+***Untested, but should be fine, it's not very complex***
+- Win a versus match
+- Win a Grand Prix | **Time-consuming**
+- Win an online match | *Option*
 
 ### Meteos
 ***May contain bad wording***
