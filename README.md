@@ -3,7 +3,7 @@ Keymaster's Keep game implementations maintained by Konoko.
 
 
 ## Games Included
-- Arms | [Objectives](#arms)
+- ARMS | [Objectives](#arms)
 - Meteos | [Objectives](#meteos)
 - M.U.G.E.N. | [Objectives](#mugen)
 - Picross 3D | [Objectives](#picross-3d)
@@ -20,7 +20,7 @@ Keymaster's Keep game implementations maintained by Konoko.
 ## Game Objectives
 Game objectives listed by game and type. Time-consuming and difficult objectives are labeled.
 
-### Arms
+### ARMS
 ***Untested, but should be fine, it's not very complex***
 - Win a versus match
 - Win a Grand Prix | **Time-consuming**
