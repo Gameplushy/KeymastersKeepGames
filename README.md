@@ -13,6 +13,7 @@ Keymaster's Keep game implementations maintained by Konoko.
 
 
 ### WIP Games (Not released, in the works or thinking about it)
+- Sayonara Wild Hearts - Wild Rank
 - M.U.G.E.N. - Add IKEMEN Go support (Tag teams and 3v3 and 4v4 simul)
 - M.U.G.E.N. - Set Min/Max for teams
 - M.U.G.E.N. - Add option for unbalanced teams
