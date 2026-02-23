@@ -286,10 +286,9 @@ class SuperSmashBros3dsWiiUGame(Game):
         else:
             templates.append(
                 GameObjectiveTemplate(
-                    label="Complete Smash Run with CHARACTER against level LEVEL opponents",
+                    label="Complete Smash Run with CHARACTER",
                     data={
-                        "CHARACTER": (self.characters, 1),
-                        "LEVEL": (self.cpu_level_range, 1),
+                        "CHARACTER": (self.characters, 1)
                     },
                     is_time_consuming=False,
                     is_difficult=False,
