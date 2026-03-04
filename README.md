@@ -13,7 +13,6 @@ Keymaster's Keep game implementations maintained by Konoko.
 
 
 ### WIP Games (Not released, in the works or thinking about it)
-- Sayonara Wild Hearts - Wild Rank
 - M.U.G.E.N. - Add IKEMEN Go support (Tag teams and 3v3 and 4v4 simul)
 - M.U.G.E.N. - Set Min/Max for teams
 - M.U.G.E.N. - Add option for unbalanced teams
@@ -26,6 +25,8 @@ Game objectives listed by game and type. Time-consuming and difficult objectives
 - Win a versus match
 - Win a Grand Prix | **Time-consuming**
 - Win an online match | *Option*
+
+There's an option to only have 1v1 matches possible
 
 ### Meteos
 ***May contain bad wording***
@@ -57,6 +58,8 @@ Hard mode allows you to uncap the amount of stars to 5 and Deluge score goal to 
 - Complete a level with a certain rank
 - Complete Album Arcade with a certain rank | **Time-consuming**
 - Complete Yolo Arcade with a certain rank | **Difficult** AND **Time-Consuming**
+
+Wild Rank is an option
 
 ### Super Smash Bros 3DS/Wii U
 ***Not fully tested yet. The Mii fights might not be named correctly, as I'm not English. Also Wii U implementation might me wonky/wrong. Wording is a bit wonky but understandable***

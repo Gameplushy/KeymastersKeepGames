@@ -8,11 +8,13 @@ from dataclasses import dataclass
 from ..game import Game
 from ..game_objective_template import GameObjectiveTemplate
 
+from Options import Toggle
+
 from ..enums import KeymastersKeepGamePlatforms
 
 @dataclass
 class SayonaraWildHeartsArchipelagoOptions:
-    pass
+    sayonara_wild_hearts_wild_rank: SayonaraWildHeartsWildRank   
 
 
 # Main Class
@@ -77,13 +79,20 @@ class SayonaraWildHeartsGame(Game):
             ),
         ]
 
-    def ranks(self) -> List[str]:
+    @functools.cached_property
+    def normal_ranks(self) -> List[str]:
         return  [
             "Bronze",
             "Silver",
             "Gold"
         ]
     
+    def ranks(self) -> List[str]:
+        res: List[str] = self.normal_ranks[:]
+        if (self.use_wild_rank):
+            res.append("Wild")
+        return res
+
     def levels(self) -> List[str]:
         return [
             "Clair De Lune",
@@ -110,3 +119,14 @@ class SayonaraWildHeartsGame(Game):
             "Inside",
             "Wild Hearts Never Die"
         ]
+    
+    @property
+    def use_wild_rank(self) -> bool:
+        return bool(self.archipelago_options.sayonara_wild_hearts_wild_rank.value)
+    
+class SayonaraWildHeartsWildRank(Toggle):
+    """
+    Indicates whether to include Wild Ranks as requirements for Sayonara Wild Hearts.
+    """
+
+    display_name = "Sayonara Wild Hearts Wild Rank"

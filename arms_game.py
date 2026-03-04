@@ -58,17 +58,8 @@ class ArmsGame(Game):
                 },
                 is_time_consuming=False,
                 is_difficult=False,
-                weight=3,
-            ),
-            GameObjectiveTemplate(
-                label="Win in 1-on-100 as CHAR",
-                data={
-                    "CHAR": (self.characters, 1),
-                },
-                is_time_consuming=False,
-                is_difficult=False,
-                weight=1,
-            ),
+                weight=5,
+            )
         ]
 
         if(not self.two_only):
@@ -96,6 +87,15 @@ class ArmsGame(Game):
                     is_time_consuming=False,
                     is_difficult=False,
                     weight=2,
+                ),
+                GameObjectiveTemplate(
+                    label="Win in 1-on-100 as CHAR",
+                    data={
+                        "CHAR": (self.characters, 1),
+                    },
+                    is_time_consuming=False,
+                    is_difficult=False,
+                    weight=1,
                 ),
             ])
 
