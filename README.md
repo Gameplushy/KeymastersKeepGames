@@ -16,6 +16,8 @@ Keymaster's Keep game implementations maintained by Konoko.
 - M.U.G.E.N. - Add IKEMEN Go support (Tag teams and 3v3 and 4v4 simul)
 - M.U.G.E.N. - Set Min/Max for teams
 - M.U.G.E.N. - Add option for unbalanced teams
+- Cursed Words
+- The Void Rains Upon Her Heart
 
 ## Game Objectives
 Game objectives listed by game and type. Time-consuming and difficult objectives are labeled.
