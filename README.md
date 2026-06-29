@@ -4,6 +4,7 @@ Keymaster's Keep game implementations maintained by Konoko.
 
 ## Games Included
 - ARMS | [Objectives](#arms)
+- Cursed Words | [Objectives](#cursed-words)
 - Meteos | [Objectives](#meteos)
 - M.U.G.E.N. | [Objectives](#mugen)
 - Picross 3D | [Objectives](#picross-3d)
@@ -16,7 +17,6 @@ Keymaster's Keep game implementations maintained by Konoko.
 - M.U.G.E.N. - Add IKEMEN Go support (Tag teams and 3v3 and 4v4 simul)
 - M.U.G.E.N. - Set Min/Max for teams
 - M.U.G.E.N. - Add option for unbalanced teams
-- Cursed Words
 - The Void Rains Upon Her Heart
 
 ## Game Objectives
@@ -29,6 +29,13 @@ Game objectives listed by game and type. Time-consuming and difficult objectives
 - Win an online match | *Option*
 
 There's an option to only have 1v1 matches possible
+
+### Cursed Words
+***Didn't play with, but tested and should be working***
+- Win a (crown) run as a specific character
+- Beat a specific boss
+
+There are options to fight a speicif cursed boss and the secret final boss 
 
 ### Meteos
 ***May contain bad wording***
